@@ -10,19 +10,19 @@ function authenticate() {
 
     const endpoint = "https://accounts.spotify.com/api/token";
 
+
+    const params = new URLSearchParams();
+    params.append("grant_type", "client_credentials")
+
     axios({
         method: "post",
         url: endpoint,
-        data: {
-            grant_type: "client_credentials"
-        },
+        data: params,
         headers: {
             Authorization: "Basic " + encoded
         }
     }).then(response => {
         console.log(response)
-    }).catch(error => {
-        console.log(error)
     })
 }
 
