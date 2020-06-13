@@ -44,5 +44,10 @@ function searchArtist(artist) {
             q: artist,
             type: "artist"
         }
+    }).then(response => {
+        console.log(response.data)
     })
 }
+
+authenticate()
+setTimeout(searchArtist, 1000, "Queen")
