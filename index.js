@@ -2,6 +2,7 @@ const axios = require("axios");
 
 const id = "9dd4ddc3546743a7ba79f561d227a93e";
 const secret = "";
+const token = {};
 
 function authenticate() {
     const authString = id + ":" + secret;
@@ -21,10 +22,13 @@ function authenticate() {
             Authorization: "Basic " + encoded
         }
     }).then(response => {
-        console.log(response.data);
+        token.access = response.data.access_token;
+        token.timeLimit = Date.now() + response.data.expires_in * 1000
+        console.log(token)
     }).catch(error => {
         console.log(error.response.data);
     })
 }
 
-console.log(authenticate());
+authenticate();
+console.log(token)
