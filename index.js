@@ -52,4 +52,22 @@ function searchArtist(artist) {
     });
 }
 
+function searchTrack(track) {
+    const endpoint = "https://api.spotify.com/v1/search";
+
+    axios({
+        method: "get",
+        url: endpoint,
+        headers: {
+            Authorization: "Bearer " + token.access
+        },
+        params: {
+            q: track,
+            type: "track"
+        }
+    }).then(response => {
+        console.log(response.data);
+    });
+}
+
 authenticate().then(token => searchArtist("Queen"));
