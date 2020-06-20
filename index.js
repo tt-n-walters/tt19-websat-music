@@ -37,7 +37,7 @@ function authenticate() {
 function searchArtist(artist) {
     const endpoint = "https://api.spotify.com/v1/search";
 
-    axios({
+    let request = axios({
         method: "get",
         url: endpoint,
         headers: {
@@ -47,15 +47,20 @@ function searchArtist(artist) {
             q: artist,
             type: "artist"
         }
-    }).then(response => {
-        console.log(response.data.artists.items[0]);
-    });
+    })
+    
+    let dataPromise = new Promise(resolve =>
+        request.then(response => {
+            resolve(response.data);
+        })
+    );
+    return dataPromise;
 }
 
 function searchTrack(track) {
     const endpoint = "https://api.spotify.com/v1/search";
 
-    axios({
+    let request = axios({
         method: "get",
         url: endpoint,
         headers: {
@@ -65,9 +70,14 @@ function searchTrack(track) {
             q: track,
             type: "track"
         }
-    }).then(response => {
-        console.log(response.data);
-    });
+    })
+    
+    let dataPromise = new Promise(resolve =>
+        request.then(response => {
+            resolve(response.data);
+        })
+    );
+    return dataPromise;
 }
 
 function getRecommendations(artists, tracks) {
