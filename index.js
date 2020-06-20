@@ -52,5 +52,4 @@ function searchArtist(artist) {
     });
 }
 
-authenticate();
-setTimeout(searchArtist, 1000, "Queen");
+authenticate().then(token => searchArtist("Queen"));
