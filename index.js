@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const id = "9dd4ddc3546743a7ba79f561d227a93e";
-const secret = "";
+const secret = "c2d604e429114d9499144be4f9ddff97";
 const token = {};
 
 function authenticate() {
@@ -14,21 +14,24 @@ function authenticate() {
     const params = new URLSearchParams();
     params.append("grant_type", "client_credentials");
 
-    axios({
+    let request = axios({
         method: "post",
         url: endpoint,
         data: params,
         headers: {
             Authorization: "Basic " + encoded
         }
-    }).then(response => {
-        token.access = response.data.access_token;
-        token.timeLimit = Date.now() + response.data.expires_in * 1000;
-        console.log(token);
-    })
-    .catch(error => {
-        console.log(error.response.data);
     });
+
+    let authPromise = new Promise(resolve =>
+        request.then(response => {
+            token.access = response.data.access_token;
+            token.timeLimit = Date.now() + response.data.expires_in * 1000;
+            resolve(token);
+        })
+    );
+
+    return authPromise;
 }
 
 function searchArtist(artist) {
@@ -45,9 +48,9 @@ function searchArtist(artist) {
             type: "artist"
         }
     }).then(response => {
-        console.log(response.data)
-    })
+        console.log(response.data);
+    });
 }
 
-authenticate()
-setTimeout(searchArtist, 1000, "Queen")
+authenticate();
+setTimeout(searchArtist, 1000, "Queen");
