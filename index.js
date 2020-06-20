@@ -132,7 +132,7 @@ app.get("/index.html", function(request, response) {
 
 
 app.get("/artist", function(request, response) {
-    let artist = request.params.get("name")
+    let artist = request.query.name
 
     searchArtist(artist).then(data => {
         response.send(data);
@@ -141,7 +141,11 @@ app.get("/artist", function(request, response) {
 
 
 app.get("/track", function(request, response) {
-    
+    let track = request.query.name
+
+    searchTrack(track).then(data => {
+        response.send(data);
+    })
 })
 
 
