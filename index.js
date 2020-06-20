@@ -1,4 +1,6 @@
 const axios = require("axios");
+const express = require("express");
+
 
 const id = "9dd4ddc3546743a7ba79f561d227a93e";
 const secret = "c2d604e429114d9499144be4f9ddff97";
@@ -107,3 +109,17 @@ function getRecommendations(artists, tracks) {
 }
 
 authenticate().then(token => getRecommendations(["1dfeR4HaWDbWqFHLkxsg1d"], []));
+
+
+
+
+
+
+
+/******************************************** */
+/*                                            */
+/*         EXPRESS SERVER CODE                */
+/*                                            */
+/******************************************** */
+
+
