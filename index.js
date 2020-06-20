@@ -91,4 +91,4 @@ function getRecommendations(artists, tracks) {
     });
 }
 
-authenticate().then(token => searchArtist("Queen"));
+authenticate().then(token => getRecommendations(["1dfeR4HaWDbWqFHLkxsg1d"], []));
