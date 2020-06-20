@@ -76,7 +76,7 @@ function getRecommendations(artists, tracks) {
     let artistParameter = artists.join(",");
     let trackParameter = tracks.join(",");
 
-    axios({
+    let request = axios({
         method: "get",
         url: endpoint,
         headers: {
@@ -86,9 +86,14 @@ function getRecommendations(artists, tracks) {
             seed_artists: artistParameter,
             seed_tracks: trackParameter
         }
-    }).then(response => {
-        console.log(response.data);
     });
+
+    let dataPromise = new Promise(resolve =>
+        request.then(response => {
+            resolve(response.data);
+        })
+    );
+    return dataPromise;
 }
 
 authenticate().then(token => getRecommendations(["1dfeR4HaWDbWqFHLkxsg1d"], []));
