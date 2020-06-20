@@ -28,5 +28,28 @@ body {
     flex: 3;
 }
 
+#input {
+    border: none;
+    padding: 0.4em;
+    font: inherit;
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
+
+
+#searches {
+    padding: 0.4em;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    min-height: 60vh;
+}
+
+#tracks {
+    padding: 0.4em;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    min-height: 70vh;
+}
 
 
