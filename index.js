@@ -48,7 +48,7 @@ function searchArtist(artist) {
             type: "artist"
         }
     }).then(response => {
-        console.log(response.data);
+        console.log(response.data.artists.items[0]);
     });
 }
 
