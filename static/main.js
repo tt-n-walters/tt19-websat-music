@@ -11,7 +11,7 @@ function setup() {
 function handleKeypress(event) {
     if (event.code == "Enter") {
         let artist = input.value;
-        let url = "/artist?name=" + artist;
+        let url = "artist?name=" + artist;
         fetch(url)
             .then(blob => blob.json())
             .then(json => {
@@ -22,7 +22,9 @@ function handleKeypress(event) {
 }
 
 function displaySearch(data) {
-    
+    let item = document.createElement("li");
+    item.innerText = data.name + " ::: " + data.external_urls.spotify;
+    searches.appendChild(item)
 }
 
 window.addEventListener("load", setup);
