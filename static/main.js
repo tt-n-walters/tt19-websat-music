@@ -1,5 +1,7 @@
 let input, searches, tracks;
 
+let artistIds = [];
+
 function setup() {
     input = document.getElementById("input");
     searches = document.getElementById("searches");
@@ -24,7 +26,14 @@ function handleKeypress(event) {
 function displaySearch(data) {
     let item = document.createElement("li");
     item.innerText = data.name + " ::: " + data.external_urls.spotify;
-    searches.appendChild(item)
+    searches.appendChild(item);
+
+    artistIds.push(data.id);
+}
+
+function recommendations() {
+    url = "recommendations?artists=" + artistIds + "&tracks=[]"
+    fetch(url).then(blob => blob.json()).then(console.log)
 }
 
 window.addEventListener("load", setup);
