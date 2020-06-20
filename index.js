@@ -122,4 +122,12 @@ authenticate().then(token => getRecommendations(["1dfeR4HaWDbWqFHLkxsg1d"], []))
 /*                                            */
 /******************************************** */
 
+const app = express();
+app.use(express.static(__dirname + "/static"));
+
+
+app.get("/index.html", function(request, response) {
+    response.sendFile("index.html", { root: __dirname });
+});
+
 
