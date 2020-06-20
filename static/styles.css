@@ -26,6 +26,7 @@ body {
 
 #recommendations {
     flex: 3;
+    margin-left: 60px;
 }
 
 #input {
