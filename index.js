@@ -71,7 +71,7 @@ function searchTrack(track) {
 }
 
 function getRecommendations(artists, tracks) {
-    const endpoint = "https://api.spotify.com/v1/recommendations"
+    const endpoint = "https://api.spotify.com/v1/recommendations";
 
     let artistParameter = artists.join(",");
     let trackParameter = tracks.join(",");
@@ -86,7 +86,9 @@ function getRecommendations(artists, tracks) {
             seed_artists: artistParameter,
             seed_tracks: trackParameter
         }
-    })
+    }).then(response => {
+        console.log(response.data);
+    });
 }
 
 authenticate().then(token => searchArtist("Queen"));
