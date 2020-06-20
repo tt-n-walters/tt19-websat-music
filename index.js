@@ -132,7 +132,7 @@ app.get("/index.html", function(request, response) {
 
 
 app.get("/artist", function(request, response) {
-    let artist = request.query.name
+    let artist = request.query.name;
 
     searchArtist(artist).then(data => {
         response.send(data);
@@ -141,7 +141,7 @@ app.get("/artist", function(request, response) {
 
 
 app.get("/track", function(request, response) {
-    let track = request.query.name
+    let track = request.query.name;
 
     searchTrack(track).then(data => {
         response.send(data);
@@ -150,7 +150,12 @@ app.get("/track", function(request, response) {
 
 
 app.get("/recommendations", function(request, response) {
-    
+    let artists = request.query.artists;
+    let tracks = request.query.tracks;
+
+    getRecommendations(artists, tracks).then(data => {
+        response.send(data);
+    })
 })
 
 
