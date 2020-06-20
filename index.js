@@ -130,5 +130,31 @@ app.get("/index.html", function(request, response) {
     response.sendFile("index.html", { root: __dirname });
 });
 
+
+app.get("/artist", function(request, response) {
+    let artist = request.params.get("name")
+
+    searchArtist(artist).then(data => {
+        response.send(data);
+    })
+})
+
+
+app.get("/track", function(request, response) {
+    
+})
+
+
+app.get("/recommendations", function(request, response) {
+    
+})
+
+
 let port = 53848;
 app.listen(port)
+
+
+// sebastian 53849
+// roberto 53850
+// irene 53851
+// bruno 53852
