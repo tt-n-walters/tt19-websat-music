@@ -1,0 +1,32 @@
+html {
+    font-family: arial;
+    font-size: 32px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-color: #49495D;
+    color: white;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    width: 80%;
+    display: flex;
+}
+
+#search {
+    flex: 2;
+}
+
+#recommendations {
+    flex: 3;
+}
+
+
+
