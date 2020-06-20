@@ -1,6 +1,5 @@
 let input, searches, tracks;
 
-
 function setup() {
     input = document.getElementById("input");
     searches = document.getElementById("searches");
@@ -12,11 +11,18 @@ function setup() {
 function handleKeypress(event) {
     if (event.code == "Enter") {
         let artist = input.value;
-        let url = "/artist?name=" + artist
-        
+        let url = "/artist?name=" + artist;
+        fetch(url)
+            .then(blob => blob.json())
+            .then(json => {
+                data = json.artists.items[0];
+                displaySearch(data);
+            });
     }
 }
 
+function displaySearch(data) {
+    
+}
 
 window.addEventListener("load", setup);
-
